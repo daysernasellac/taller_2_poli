@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { trivia_categories } from "../data/dataCategorias";
 import { dificultades } from "../data/dataDificulad";
@@ -5,31 +6,26 @@ import useSelect from "../hooks/useSelect";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
-const Formulario = ({
-  inputNombre,
-  setInputNombre,
-  setCategory,
-  setDificultad,
-}) => {
+const es = {
+  CATEGORIA: "Categoria:",
+  DIFICULTAD: "Dificultad:",
+};
+
+const Formulario = () => {
+  const [inputNombre, setInputNombre] = useState("");
   const [category, SelectCategory] = useSelect(
-    "General Knowledge",
+    trivia_categories[0], // initial state
     trivia_categories,
-    "Categoria:"
+    es.CATEGORIA
   );
   const [dificultad, SelectDificultad] = useSelect(
-    "easy",
+    dificultades[0], // initial state
     dificultades,
-    "Dificultad"
+    es.DIFICULTAD
   );
-  const handleChangeName = ({ target }) => {
-    setInputNombre(target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCategory(category);
-    setDificultad(dificultad);
-    setInputNombre(inputNombre);
     console.log(category);
     console.log(dificultad);
     console.log(inputNombre);
@@ -39,29 +35,21 @@ const Formulario = ({
     <>
       <div className="min-h-full flex items-left justify-left form-color">
         <div className="max-w-md w-full space-y-8n">
-          <div></div>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <div className="columns-2">
-                <div>
-                  <p className="mt-2 text-left text-sm text-gray-600">
-                    Usuario:
-                  </p>
-                </div>
-                <input
-                  id="nombre"
-                  name="nombre"
-                  type="text"
-                  value={inputNombre}
-                  onChange={handleChangeName}
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                />
-              </div>
-              <SelectCategory />
-              <SelectDificultad />
+              <Form.Label>Usuario:</Form.Label>
+              <Form.Control
+                type="text"
+                required
+                value={inputNombre}
+                onChange={(e) => setInputNombre(e.target.value)}
+              ></Form.Control>
             </Form.Group>
-            <Button type="submit">Ingresar</Button>
+            <SelectCategory />
+            <SelectDificultad />
+            <Button type="submit" className="m-t-12">
+              Ingresar
+            </Button>
           </Form>
         </div>
       </div>

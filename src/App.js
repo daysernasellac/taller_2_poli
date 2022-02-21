@@ -32,12 +32,7 @@ const App = () => {
         <Container>
           <Row>
             <Col>
-              <Formulario
-                inputNombre={inputNombre}
-                setCategory={setCategory}
-                setDificultad={setDificultad}
-                setInputNombre={setInputNombre}
-              />
+              <Formulario />
             </Col>
           </Row>
         </Container>
