@@ -3,12 +3,29 @@ import { Form } from "react-bootstrap";
 
 const useSelect = (initialState, options, label) => {
   const [state, setState] = useState(initialState);
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const selectedValue = parseInt(e.target.value);
+
+    if (!selectedValue) return;
+
+    const itemSelected = options.find(
+      (option) => option.value === selectedValue
+    );
+
+    if (!itemSelected) return;
+
+    setState(itemSelected);
+  };
   const select = () => (
     <>
       <Form.Label>{label}</Form.Label>
-      <Form.Select value={state} onChange={(e) => setState(e.target.value)}>
+      <Form.Select value={state.value} onChange={(e) => handleChange(e)}>
         {options.map((option) => (
-          <option key={option.value}>{option.label}</option>
+          <option value={option.value} key={option.value}>
+            {option.label}
+          </option>
         ))}
       </Form.Select>
     </>
