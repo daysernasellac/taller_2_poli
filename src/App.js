@@ -6,7 +6,9 @@ import Articles from "./components/Articles";
 import "./App.css";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
-import Login from "./pages/login/Login";
+// import Login from "./pages/login/Login";
+
+const Login = () => <div>hello</div>;
 
 const App = () => {
     const [category, setCategory] = useState("");
