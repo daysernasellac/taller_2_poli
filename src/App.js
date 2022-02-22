@@ -6,7 +6,7 @@ import Articles from "./components/Articles";
 import "./App.css";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
-import Login from "./pages/Login/Login";
+import Login from "./pages/login/Login";
 
 const App = () => {
     const [category, setCategory] = useState("");
@@ -26,7 +26,7 @@ const App = () => {
                     </RequiredAuth>
                 }
             >
-                <Route path=":question" element={<Articles />} />
+                <Route path="/trivia" element={<Articles />} />
             </Route>
         </Routes>
     );

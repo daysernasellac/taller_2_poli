@@ -11,7 +11,7 @@ const Login = () => {
         if (!data) navigate("/login");
 
         return AuthProvider.logIn(data)
-            ? navigate(`/${data?.usuario}`)
+            ? navigate(`/trivia`)
             : navigate("/login");
     };
     return (

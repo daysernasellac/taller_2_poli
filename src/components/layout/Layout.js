@@ -1,19 +1,23 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
+import Header from "../Header";
+import "./layout.css";
+const Layout = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
 
-const Layout = ({ children }) => {
-  return (
-    <div className="App-header">
-      <Container>
-        <Row>
-          <Col>
-            <Outlet />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+    useEffect(() => {
+        if (location.pathname === "/") navigate("/trivia");
+    }, []);
+    return (
+        <div id="layout" className="container-fluid">
+            <Header className="sticky" />
+            <div className="container">
+                <Outlet />
+            </div>
+        </div>
+    );
 };
 
 export default Layout;
