@@ -12,7 +12,7 @@ const es = {
     DIFICULTAD: "Dificultad",
 };
 
-const Formulario = () => {
+const Formulario = ({ handleSubmit }) => {
     const [inputNombre, setInputNombre] = useState("");
     const [category, SelectCategory] = useSelect(
         trivia_categories[0], // initial state
@@ -25,15 +25,17 @@ const Formulario = () => {
         es.DIFICULTAD
     );
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(category);
-        console.log(dificultad);
-        console.log(inputNombre);
-    };
-
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form
+            onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit({
+                    usuario: inputNombre,
+                    categoria: category,
+                    dificultad: dificultad,
+                });
+            }}
+        >
             <Form.Group className="f-group">
                 <Form.Label>{es.USUARIO}</Form.Label>
                 <Form.Control

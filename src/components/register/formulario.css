@@ -22,8 +22,18 @@
     border-color: var(--main-bg-border-color);
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
     border-color: var(--main-bg-border-color);
     background-color: var(--main-bg-border-color);
     color: white;
+}
+.btn:focus {
+    box-shadow: var(--form-shadow);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--main-bg-border-color);
+    box-shadow: var(--form-shadow);
 }
