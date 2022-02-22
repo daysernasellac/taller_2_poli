@@ -6,7 +6,7 @@ import Articles from "./components/Articles";
 import "./App.css";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
-// import Login from "./pages/login/Login";
+import Login from "./game/login/Login";
 
 const Login = () => <div>hello</div>;
 
