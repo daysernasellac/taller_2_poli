@@ -8,8 +8,6 @@ import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
 import Login from "./game/login/Login";
 
-const Login = () => <div>hello</div>;
-
 const App = () => {
     const [category, setCategory] = useState("");
     const [dificultad, setDificultad] = useState("");
