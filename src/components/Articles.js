@@ -1,19 +1,11 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import ArticlesItem from "./ArticlesItem";
 
 const Articles = ({ articles }) => {
-  return (
-    <Container>
-      <Row>
-        {articles.map((article, index) => (
-          <Col key={index} sm={4} className="my-2">
-            <ArticlesItem article={article} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
+  let { question } = useParams();
+  return <h1>Hello Question {question}</h1>;
 };
 
 export default Articles;
