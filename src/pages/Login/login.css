@@ -1,0 +1,37 @@
+#login {
+    /* Color */
+    background-color: var(--main-bg-color);
+    /* Dimensions */
+    width: 100%;
+    min-height: 100vh;
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: top;
+    align-items: center;
+    /* padding */
+    padding-top: 1.5rem;
+}
+
+.title {
+    margin-bottom: 0;
+    font-size: 5rem;
+    color: var(--title-color);
+}
+
+.sub-title {
+    font-size: 1.7rem;
+    color: var(--title-color);
+    margin-bottom: 3rem;
+    font-weight: 200;
+}
+
+Form {
+    background-color: var(--main-bg-contrast-color);
+    padding: 2em;
+    border-radius: 8px;
+    width: 30vw;
+    border: 1px solid;
+    border-color: var(--main-bg-border-color);
+}

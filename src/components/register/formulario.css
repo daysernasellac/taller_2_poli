@@ -1,0 +1,29 @@
+.form-label {
+    font-size: 1.5rem;
+    color: var(--font-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 1px;
+}
+
+.f-group {
+    margin: 1rem 0;
+}
+
+.btn {
+    /* float: right; */
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--font-color);
+    background-color: transparent;
+    border-color: var(--main-bg-border-color);
+}
+
+.btn:hover {
+    border-color: var(--main-bg-border-color);
+    background-color: var(--main-bg-border-color);
+    color: white;
+}

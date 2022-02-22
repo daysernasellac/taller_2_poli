@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Formulario from "./components/Formulario";
 import Articles from "./components/Articles";
 // import Header from "./components/Header";
 // import { APIKEY, COUNTRY, URLBASE } from "./data/apis";
 import "./App.css";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
+import Login from "./pages/Login/Login";
 
 const App = () => {
     const [category, setCategory] = useState("");
@@ -17,7 +17,7 @@ const App = () => {
 
     return (
         <Routes>
-            <Route exact path="/login" element={<Formulario />} />
+            <Route exact path="/login" element={<Login />} />
             <Route
                 path="/"
                 element={
