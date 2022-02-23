@@ -1,4 +1,5 @@
 :root {
+    --font-color-hover: white;
     --font-color: black;
     --title-color: hsl(138, 10%, 10%);
     --sub-title-color: hsl(138, 10%, 10%);

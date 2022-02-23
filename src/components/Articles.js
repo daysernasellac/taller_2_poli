@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import ArticlesItem from "./ArticlesItem";
 
 const Articles = ({ articles }) => {
-    return <h1>Hello Question</h1>;
+    const [puntuacion, setPuntuacion] = useOutletContext().puntuacion;
+    useEffect(() => {
+        setPuntuacion(10);
+    }, []);
+    return (
+        <h1>
+            Hello Question{" "}
+            <button
+                onClick={() => {
+                    setPuntuacion(puntuacion + 1);
+                }}
+            >
+                Jugar
+            </button>
+        </h1>
+    );
 };
 
 export default Articles;

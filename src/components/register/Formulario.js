@@ -27,10 +27,11 @@ const Formulario = ({ handleSubmit }) => {
 
     return (
         <Form
+            id="login-form"
             onSubmit={(e) => {
                 e.preventDefault();
                 handleSubmit({
-                    usuario: inputNombre,
+                    nombre: inputNombre,
                     categoria: category,
                     dificultad: dificultad,
                 });

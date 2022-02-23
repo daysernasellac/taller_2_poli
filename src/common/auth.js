@@ -1,8 +1,9 @@
 export const AuthProvider = {
-    logIn: function ({ usuario, categoria, dificultad }) {
-        if (!usuario || !categoria || !dificultad) return false;
+    logIn: function ({ nombre, categoria, dificultad }) {
+        if (!nombre || !categoria || !dificultad) return false;
+
         let newUser = JSON.stringify({
-            usuario,
+            nombre,
             categoria,
             dificultad,
         });
@@ -11,8 +12,10 @@ export const AuthProvider = {
 
         return true;
     },
-    logOut: function () {
+    logOut: function (cb) {
         localStorage.removeItem("USER");
+
+        return cb(true);
     },
     isAuth: function () {
         return localStorage.getItem("USER");

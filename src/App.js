@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Articles from "./components/Articles";
-// import Header from "./components/Header";
-// import { APIKEY, COUNTRY, URLBASE } from "./data/apis";
-import "./App.css";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
 import Login from "./game/login/Login";
 
+import "./App.css";
 const App = () => {
-    const [category, setCategory] = useState("");
-    const [dificultad, setDificultad] = useState("");
     // const [inputNombre, setInputNombre] = useState("");
     // const [articles, setArticles] = useState([]);
     // top-headlines?country=${COUNTRY}&category=${category}&apiKey=${APIKEY}`;

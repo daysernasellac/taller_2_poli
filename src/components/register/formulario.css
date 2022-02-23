@@ -1,4 +1,4 @@
-.form-label {
+#login-form .form-label {
     font-size: 1.5rem;
     color: var(--font-color);
     letter-spacing: 1px;
@@ -6,11 +6,11 @@
     margin-top: 1px;
 }
 
-.f-group {
+#login-form .f-group {
     margin: 1rem 0;
 }
 
-.btn {
+#login-form .btn {
     /* float: right; */
     margin-top: 1.5rem;
     width: 100%;
@@ -22,18 +22,18 @@
     border-color: var(--main-bg-border-color);
 }
 
-.btn:hover,
-.btn:focus {
+#login-form .btn:hover,
+#login-form .btn:focus {
     border-color: var(--main-bg-border-color);
     background-color: var(--main-bg-border-color);
     color: white;
 }
-.btn:focus {
+#login-form .btn:focus {
     box-shadow: var(--form-shadow);
 }
 
-.form-control:focus,
-.form-select:focus {
+#login-form .form-control:focus,
+#login-form .form-select:focus {
     border-color: var(--main-bg-border-color);
     box-shadow: var(--form-shadow);
 }

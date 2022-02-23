@@ -1,0 +1,20 @@
+#header .user-controls {
+    text-transform: capitalize;
+    cursor: default;
+}
+
+#header .logout {
+    cursor: pointer;
+}
+
+#header .logout:hover {
+    color: var(--font-color-hover);
+}
+
+#header .controls-container {
+    width: 100%;
+    min-height: 2rem;
+
+    display: flex;
+    justify-content: space-around;
+}
