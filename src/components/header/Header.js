@@ -6,22 +6,28 @@ const Header = ({ user, puntuacion, handleExit }) => {
         <Navbar bg="dark" variant="dark" id="header">
             <Container fluid className="controls-container">
                 <Navbar.Brand href="/">
-                    {user ? (
-                        <Navbar.Text className="user-controls">
-                            Jugador: {user.nombre}
-                        </Navbar.Text>
-                    ) : null}
+                    <Navbar.Text className="user-controls">
+                        Jugador:
+                        <span className="special-text">{user?.nombre}</span>
+                    </Navbar.Text>
                 </Navbar.Brand>
 
-                <Navbar.Text>Ganancias: {puntuacion}</Navbar.Text>
-                {user ? (
-                    <Navbar.Text
-                        className="user-controls logout"
-                        onClick={handleExit}
-                    >
-                        Salir
-                    </Navbar.Text>
-                ) : null}
+                <Navbar.Text>
+                    Ganancias:
+                    <span className="special-text">{puntuacion}</span>
+                </Navbar.Text>
+                <Navbar.Text>
+                    Nivel:
+                    <span className="special-text">
+                        {user?.dificultad?.label}
+                    </span>
+                </Navbar.Text>
+                <Navbar.Text
+                    className="user-controls logout"
+                    onClick={handleExit}
+                >
+                    Salir
+                </Navbar.Text>
             </Container>
         </Navbar>
     );

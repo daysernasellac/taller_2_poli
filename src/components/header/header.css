@@ -18,3 +18,8 @@
     display: flex;
     justify-content: space-around;
 }
+
+#header .special-text {
+    color: var(--font-color-hover);
+    margin-left: 5px;
+}

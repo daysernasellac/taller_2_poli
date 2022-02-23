@@ -29,18 +29,25 @@ const Layout = () => {
         getUser();
         if (location.pathname === "/") navigate("/trivia");
     }, []);
+
     return (
-        <div id="layout" className="container-fluid">
-            <Header
-                className="sticky"
-                user={user}
-                handleExit={handleExit}
-                puntuacion={puntuacion}
-            />
-            <div className="container">
-                <Outlet context={{ puntuacion: [puntuacion, setPuntuacion] }} />
+        <>
+            <div id="layout" className="container-fluid">
+                <Header
+                    className="sticky"
+                    user={user}
+                    handleExit={handleExit}
+                    puntuacion={puntuacion}
+                />
+                <div className="container">
+                    <Outlet
+                        context={{
+                            puntuacion: [puntuacion, setPuntuacion],
+                        }}
+                    />
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
