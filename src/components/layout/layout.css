@@ -1,4 +1,22 @@
 #layout {
-    background-color: green;
+    /* background-color: green; */
     padding: 0;
+    min-height: 100vh;
+    padding-top: 56px;
+}
+
+#layout .game-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* padding-top: 1em; */
+}
+
+#layout .game-container .left {
+    width: 70%;
+    background-color: blue;
+}
+
+#layout .game-container #scoreboard {
+    width: 30%;
 }

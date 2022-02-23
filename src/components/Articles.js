@@ -4,9 +4,6 @@ import ArticlesItem from "./ArticlesItem";
 
 const Articles = ({ articles }) => {
     const [puntuacion, setPuntuacion] = useOutletContext().puntuacion;
-    useEffect(() => {
-        setPuntuacion(10);
-    }, []);
     return (
         <h1>
             Hello Question{" "}

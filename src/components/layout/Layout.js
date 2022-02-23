@@ -3,6 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import "./layout.css";
 import { AuthProvider } from "../../common/auth";
+import Scoreboard from "../scoreboard/Scoreboard";
 const Layout = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -14,6 +15,12 @@ const Layout = () => {
         AuthProvider.logOut(() => {
             navigate("login");
         });
+    };
+
+    const handleSetPuntacion = (newPuntuacion) => {
+        if (newPuntuacion >= 11) return setPuntuacion(0);
+
+        setPuntuacion(newPuntuacion);
     };
 
     useEffect(() => {
@@ -39,12 +46,15 @@ const Layout = () => {
                     handleExit={handleExit}
                     puntuacion={puntuacion}
                 />
-                <div className="container">
-                    <Outlet
-                        context={{
-                            puntuacion: [puntuacion, setPuntuacion],
-                        }}
-                    />
+                <div className="game-container">
+                    <div className="left">
+                        <Outlet
+                            context={{
+                                puntuacion: [puntuacion, handleSetPuntacion],
+                            }}
+                        />
+                    </div>
+                    <Scoreboard puntuacionActual={puntuacion} />
                 </div>
             </div>
         </>
