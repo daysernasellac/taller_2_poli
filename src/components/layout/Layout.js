@@ -17,8 +17,10 @@ const Layout = () => {
         });
     };
 
+    const maxPointsAvailable = 11;
+
     const handleSetPuntacion = (newPuntuacion) => {
-        if (newPuntuacion >= 11) return setPuntuacion(0);
+        if (newPuntuacion >= maxPointsAvailable) return setPuntuacion(0);
 
         setPuntuacion(newPuntuacion);
     };

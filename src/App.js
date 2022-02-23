@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Articles from "./components/Articles";
 import Layout from "./components/layout/Layout";
 import { AuthProvider } from "./common/auth";
 import Login from "./game/login/Login";
 
 import "./App.css";
+import Preguntas from "./components/preguntas/Preguntas";
 const App = () => {
     // const [inputNombre, setInputNombre] = useState("");
     // const [articles, setArticles] = useState([]);
@@ -21,7 +21,7 @@ const App = () => {
                     </RequiredAuth>
                 }
             >
-                <Route path="/trivia" element={<Articles />} />
+                <Route path="/trivia" element={<Preguntas />} />
             </Route>
         </Routes>
     );

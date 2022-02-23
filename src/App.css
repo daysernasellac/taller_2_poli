@@ -7,6 +7,9 @@
     --main-bg-contrast-color: hsl(138, 10%, 70%);
     --main-bg-border-color: hsl(138, 10%, 40%);
     --form-shadow: 0 0 0 0.25rem hsla(138, 10%, 20%, 0.2);
+
+    --correct-answer-color: hsl(143, 76%, 45%);
+    --wrong-answer-color: hsl(0, 76%, 43%);
 }
 
 .App-header {
