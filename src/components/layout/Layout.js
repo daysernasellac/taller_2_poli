@@ -16,6 +16,7 @@ const Layout = () => {
     const [puntuacion, setPuntuacion] = useState(0);
     const [questions, setQuestions] = useState();
     const [currentQuestion, setCurrentQuestion] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleExit = () => {
         AuthProvider.logOut(() => {
@@ -69,13 +70,15 @@ const Layout = () => {
         // const url = `${URLBASE}/api.php?country=${COUNTRY}&amount=10&category=${categoria.value}&difficulty=${dificultad.label}&type=multiple&apiKey=${APIKEY}`;
         const url = `https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple`;
 
+        setIsLoading(true);
         fetch(url)
             .then((response) => response.json())
             .then((response) => {
                 if (response.response_code > 0) handleExit();
                 setQuestions(response?.results);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => console.error(error))
+            .finally(() => setIsLoading(false));
     }, []);
 
     /**
@@ -123,15 +126,24 @@ const Layout = () => {
                     puntuacion={puntuacion}
                 />
                 <div className="game-container">
-                    <div className="left">
-                        <Outlet
-                            context={{
-                                puntuacion: [puntuacion, handleSelectQuestion],
-                                questions,
-                            }}
-                        />
-                    </div>
-                    <Scoreboard puntuacionActual={puntuacion} />
+                    {isLoading ? (
+                        <div className="loading">cargando...</div>
+                    ) : (
+                        <>
+                            <div className="left">
+                                <Outlet
+                                    context={{
+                                        puntuacion: [
+                                            puntuacion,
+                                            handleSelectQuestion,
+                                        ],
+                                        questions,
+                                    }}
+                                />
+                            </div>
+                            <Scoreboard puntuacionActual={puntuacion} />
+                        </>
+                    )}
                 </div>
             </div>
         </>
