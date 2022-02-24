@@ -4,7 +4,7 @@ import "./preguntas.css";
 
 const Preguntas = () => {
     const [puntuacion, selectQuestion] = useOutletContext().puntuacion;
-    const { questions } = useOutletContext();
+    const { questions, handleGameOver, isBlockQuestion } = useOutletContext();
     const { pregunta } = useParams();
 
     const currentQuestion =
@@ -12,7 +12,14 @@ const Preguntas = () => {
 
     return (
         <div id="preguntas" className="preguntas-container">
-            <Outlet context={[currentQuestion, selectQuestion]} />
+            <Outlet
+                context={[
+                    currentQuestion,
+                    selectQuestion,
+                    handleGameOver,
+                    isBlockQuestion,
+                ]}
+            />
         </div>
     );
 };

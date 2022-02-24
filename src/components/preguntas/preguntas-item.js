@@ -6,7 +6,8 @@ import "./preguntas.css";
 const defaultQuestionTime = 30;
 
 const PreguntasItem = () => {
-    const [question, handleSelectQuestion] = useOutletContext();
+    const [question, handleSelectQuestion, handleGameOver, isBlockQuestion] =
+        useOutletContext();
     const [optionsList, setOptionsList] = useState();
 
     const optionsRefs = [useRef(), useRef(), useRef(), useRef()];
@@ -81,8 +82,8 @@ const PreguntasItem = () => {
 
     useEffect(() => {
         if (time === 0) {
-            console.log("game over");
             clearInterval(timer);
+            handleGameOver();
         }
 
         return () => {
@@ -115,7 +116,11 @@ const PreguntasItem = () => {
                         ref={optionsRefs[index]}
                         className="option"
                         key={index}
-                        onClick={(e) => handleSelectQuestion(option, e.target)}
+                        onClick={(e) =>
+                            !isBlockQuestion
+                                ? handleSelectQuestion(option, e.target)
+                                : null
+                        }
                     >
                         {option.item}
                     </div>

@@ -3,7 +3,7 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/header";
 import "./layout.css";
 import { AuthProvider } from "../../common/auth";
-import Scoreboard from "../scoreboard/scoreboard";
+import Scoreboard from "../puntaje/scoreboard";
 import { APIKEY, COUNTRY, URLBASE } from "../../data/apis";
 
 const maxPointsAvailable = 10;
@@ -17,6 +17,12 @@ const Layout = () => {
     const [questions, setQuestions] = useState();
     const [currentQuestion, setCurrentQuestion] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const [isBlockQuestion, setIsBlockQuestion] = useState(false);
+    const [ganancias, setGanancias] = useState(0);
+
+    const prices = [
+        1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000,
+    ];
 
     const handleExit = () => {
         AuthProvider.logOut(() => {
@@ -24,7 +30,7 @@ const Layout = () => {
         });
     };
 
-    const handleFinish = () => {
+    const handleGameOver = () => {
         AuthProvider.logOut(() => {
             navigate(`finish?name=${user.nombre}&score=${puntuacion}`);
         });
@@ -38,6 +44,7 @@ const Layout = () => {
         }
 
         setPuntuacion(newPuntuacion);
+        setGanancias(ganancias + prices[newPuntuacion - 1]);
     };
 
     const handleSelectQuestion = (option, target) => {
@@ -45,16 +52,18 @@ const Layout = () => {
             if (!option.isCorrect) {
                 target.classList.add("wrong");
                 setTimeout(() => {
-                    handleFinish();
+                    handleGameOver();
                 }, 5000);
             } else {
                 target.classList.add("correct");
                 setTimeout(() => {
                     handleSetPuntacion(puntuacion + 1);
                     setCurrentQuestion(currentQuestion + 1);
+                    setIsBlockQuestion(false);
                 }, 5000);
             }
 
+            setIsBlockQuestion(true);
             resolve();
         });
     };
@@ -123,7 +132,7 @@ const Layout = () => {
                     className="sticky"
                     user={user}
                     handleExit={handleExit}
-                    puntuacion={puntuacion}
+                    ganancias={ganancias}
                 />
                 <div className="game-container">
                     {isLoading ? (
@@ -138,10 +147,15 @@ const Layout = () => {
                                             handleSelectQuestion,
                                         ],
                                         questions,
+                                        handleGameOver,
+                                        isBlockQuestion,
                                     }}
                                 />
                             </div>
-                            <Scoreboard puntuacionActual={puntuacion} />
+                            <Scoreboard
+                                puntuacionActual={puntuacion}
+                                prices={prices}
+                            />
                         </>
                     )}
                 </div>

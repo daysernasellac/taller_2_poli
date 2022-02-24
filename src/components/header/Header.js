@@ -1,7 +1,7 @@
 import { Container, Navbar } from "react-bootstrap";
 
 import "./header.css";
-const Header = ({ user, puntuacion, handleExit }) => {
+const Header = ({ user, ganancias, handleExit }) => {
     return (
         <Navbar bg="dark" variant="dark" id="header">
             <Container fluid className="controls-container">
@@ -14,7 +14,7 @@ const Header = ({ user, puntuacion, handleExit }) => {
 
                 <Navbar.Text>
                     Ganancias:
-                    <span className="special-text">{puntuacion}</span>
+                    <span className="special-text">${ganancias}</span>
                 </Navbar.Text>
                 <Navbar.Text>
                     Nivel:
