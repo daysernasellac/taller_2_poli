@@ -32,14 +32,14 @@ const Layout = () => {
 
     const handleGameOver = () => {
         AuthProvider.logOut(() => {
-            navigate(`finish?name=${user.nombre}&score=${puntuacion}`);
+            navigate(`finish?name=${user.nombre}&score=${ganancias}`);
         });
     };
 
     const handleSetPuntacion = (newPuntuacion) => {
-        if (newPuntuacion >= maxPointsAvailable) {
-            setPuntuacion(0);
-            setCurrentQuestion(0);
+        if (newPuntuacion > maxPointsAvailable) {
+            setPuntuacion(10);
+            handleGameOver();
             return;
         }
 
@@ -77,6 +77,7 @@ const Layout = () => {
 
         if (!nombre || !dificultad || !categoria) return Promise.reject();
         // const url = `${URLBASE}/api.php?country=${COUNTRY}&amount=10&category=${categoria.value}&difficulty=${dificultad.label}&type=multiple&apiKey=${APIKEY}`;
+        // const url = `https://opentdb.com/api.php?amount=10&category=${categoria.value}&difficulty=${dificultad.label}&type=multiple`;
         const url = `https://opentdb.com/api.php?amount=10&category=16&difficulty=easy&type=multiple`;
 
         setIsLoading(true);
