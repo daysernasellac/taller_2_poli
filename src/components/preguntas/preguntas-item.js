@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import "./preguntas.css";
+
+const defaultQuestionTime = 30;
+
 const PreguntasItem = () => {
     const [question, handleSelectQuestion] = useOutletContext();
     const [optionsList, setOptionsList] = useState();
-    const [optionsRefs, setOptionsRefs] = useState([
-        useRef(),
-        useRef(),
-        useRef(),
-        useRef(),
-    ]);
 
-    const [time, setTime] = useState(30);
+    const optionsRefs = [useRef(), useRef(), useRef(), useRef()];
+    const [time, setTime] = useState(defaultQuestionTime);
 
     /**
      * Metodo que recibe un array de respuestas incorrectas y
@@ -63,18 +61,23 @@ const PreguntasItem = () => {
 
     const countDown = () => setTime(time - 1);
 
+    /**
+     * Metodo que limpia los estilos
+     * de pregunta correcta o incorrecta, antes de que
+     * la proxima pregunta se renderice
+     */
     const clearStyles = () => {
         if (!optionsList) return;
 
         optionsRefs.map((refs) => {
             refs?.current?.classList.remove("correct");
             refs?.current?.classList.remove("wrong");
+
+            return refs;
         });
     };
 
-    const timer = setInterval(() => {
-        countDown();
-    }, 1000);
+    const timer = setInterval(() => countDown(), 1000);
 
     useEffect(() => {
         if (time === 0) {
@@ -85,7 +88,7 @@ const PreguntasItem = () => {
         return () => {
             clearInterval(timer);
         };
-    }, [timer]);
+    }, [timer, time]);
 
     useEffect(() => {
         if (!question) return;
@@ -97,6 +100,7 @@ const PreguntasItem = () => {
             ),
         };
 
+        setTime(defaultQuestionTime);
         setOptionsList(newItem.options);
         clearStyles();
     }, [question]);
