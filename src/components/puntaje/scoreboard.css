@@ -27,5 +27,7 @@
 }
 
 #scoreboard .price-tag.active {
-    border: 2px solid red;
+    background-color: var(--main-bg-border-color);
+    color: var(--font-color-hover);
+    box-shadow: var(--form-shadow);
 }
