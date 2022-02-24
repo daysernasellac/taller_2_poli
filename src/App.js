@@ -1,15 +1,14 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./components/layout/Layout";
+import Layout from "./components/layout/layout";
 import { AuthProvider } from "./common/auth";
 import Login from "./game/login/Login";
 
 import "./App.css";
-import Preguntas from "./components/preguntas/Preguntas";
-const App = () => {
-    // const [inputNombre, setInputNombre] = useState("");
-    // const [articles, setArticles] = useState([]);
-    // top-headlines?country=${COUNTRY}&category=${category}&apiKey=${APIKEY}`;
+import Preguntas from "./components/preguntas/preguntas";
+import PreguntasItem from "./components/preguntas/preguntas-item";
+import Finish from "./game/finish/finish";
 
+const App = () => {
     return (
         <Routes>
             <Route exact path="/login" element={<Login />} />
@@ -21,8 +20,11 @@ const App = () => {
                     </RequiredAuth>
                 }
             >
-                <Route path="/trivia" element={<Preguntas />} />
+                <Route path="/trivia" element={<Preguntas />}>
+                    <Route path=":pregunta" element={<PreguntasItem />} />
+                </Route>
             </Route>
+            <Route exact path="/finish" element={<Finish />} />
         </Routes>
     );
 };

@@ -1,0 +1,48 @@
+#finish {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-bg-color);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#finish h1 {
+    margin: rem 0;
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+#finish h2 {
+    font-size: 4rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 1rem 0;
+}
+
+#finish h3 {
+    margin: 2rem 0;
+    font-size: 3rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#finish button {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-transform: capitalize;
+    background: transparent;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    margin-top: 1rem;
+
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#finish button:hover {
+    color: var(--font-color-hover);
+    background-color: var(--main-bg-contrast-color);
+}

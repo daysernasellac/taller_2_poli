@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import ArticlesItem from "./ArticlesItem";
+import ArticlesItem from "./articlesItem";
 
 const Articles = ({ articles }) => {
     const [puntuacion, setPuntuacion] = useOutletContext().puntuacion;
