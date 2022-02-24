@@ -12,6 +12,8 @@ const PreguntasItem = () => {
         useRef(),
     ]);
 
+    const [time, setTime] = useState(30);
+
     /**
      * Metodo que recibe un array de respuestas incorrectas y
      * la respuesta correcta, luego llama al metodo que devuelve
@@ -59,15 +61,31 @@ const PreguntasItem = () => {
         return arr;
     };
 
+    const countDown = () => setTime(time - 1);
+
     const clearStyles = () => {
         if (!optionsList) return;
+
         optionsRefs.map((refs) => {
             refs?.current?.classList.remove("correct");
             refs?.current?.classList.remove("wrong");
         });
     };
 
-    useEffect(() => {}, []);
+    const timer = setInterval(() => {
+        countDown();
+    }, 1000);
+
+    useEffect(() => {
+        if (time === 0) {
+            console.log("game over");
+            clearInterval(timer);
+        }
+
+        return () => {
+            clearInterval(timer);
+        };
+    }, [timer]);
 
     useEffect(() => {
         if (!question) return;
@@ -85,6 +103,7 @@ const PreguntasItem = () => {
 
     return (
         <>
+            <div className="contador">{time}</div>
             <div className="pregunta">{question?.question}</div>
             <div className="opciones">
                 {optionsList?.map((option, index) => (

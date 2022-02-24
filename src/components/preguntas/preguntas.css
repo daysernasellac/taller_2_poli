@@ -5,6 +5,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* border: 1px solid red; */
+    position: relative;
+}
+
+#preguntas .contador {
+    width: 4rem;
+    height: 4rem;
+    top: 3rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2rem;
 }
 
 #preguntas .pregunta {
@@ -13,9 +28,9 @@
     font-size: 3rem;
     border: 1px solid black;
     width: 90%;
-    position: relative;
     top: -100px;
     text-align: center;
+    margin: 5rem;
 }
 
 #preguntas .opciones {
